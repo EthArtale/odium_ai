@@ -120,7 +120,7 @@ class _ChatScreenState extends State<ChatScreen> {
             SizedBox(width: 10),
             Text(
               "ODIUM AI",
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Colors.white, fontFamily: 'OpenSans'),
             ),
           ],
         ),
@@ -131,8 +131,7 @@ class _ChatScreenState extends State<ChatScreen> {
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage(
-                    "assets/images/chat_background.png"),
+                image: AssetImage("assets/images/chat_background.png"),
                 fit: BoxFit.cover,
               ),
             ),
@@ -169,15 +168,47 @@ class _ChatScreenState extends State<ChatScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Вы: ${entry["user"]}",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white)),
+                            Text.rich(
+                              TextSpan(
+                                children: [
+                                  TextSpan(
+                                    text: "Вы: ",
+                                    style: TextStyle(
+                                        fontFamily: 'OpenSans',
+                                        color:
+                                            Color.fromARGB(255, 126, 231, 231)),
+                                  ),
+                                  TextSpan(
+                                    text: "${entry["user"]}",
+                                    style: TextStyle(
+                                        fontFamily: 'OpenSans',
+                                        fontWeight: FontWeight.w200,
+                                        color: Colors.white),
+                                  ),
+                                ],
+                              ),
+                            ),
                             SizedBox(height: 4),
-                            Text("AI-ассистент: ${entry["bot"]}",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white)),
+                            Text.rich(
+                              TextSpan(
+                                children: [
+                                  TextSpan(
+                                    text: "AI-ассистент: ",
+                                    style: TextStyle(
+                                        fontFamily: 'OpenSans',
+                                        color:
+                                            Color.fromARGB(255, 126, 231, 231)),
+                                  ),
+                                  TextSpan(
+                                    text: "${entry["bot"]}",
+                                    style: TextStyle(
+                                        fontFamily: 'OpenSans',
+                                        fontWeight: FontWeight.w200,
+                                        color: Colors.white),
+                                  ),
+                                ],
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -195,7 +226,6 @@ class _ChatScreenState extends State<ChatScreen> {
                   children: [
                     Expanded(
                       child: TextField(
-                        
                         controller: _controller,
                         style: TextStyle(
                           color: Colors.white,
