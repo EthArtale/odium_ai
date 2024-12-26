@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gigachat_dart/gigachat_dart.dart';
 import 'database_helper.dart';
 
@@ -56,6 +58,16 @@ class _ChatScreenState extends State<ChatScreen> {
     _gigachatModel = GigachatClient.fromBase64(
         base64token:
             'NTJmNGU5ZTEtZmRlZS00MTAzLWE3NDEtMzRmYWU0MjFhNGNiOjI4MGNlZmVkLTk0YjgtNDI5Yi05MTZhLTg1NTY5Mzk1N2E4YQ==');
+    _adjustSystemUI();
+  }
+
+  void _adjustSystemUI() {
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        systemNavigationBarColor: Color.fromARGB(255, 32, 34, 37), // Цвет панели навигации
+        systemNavigationBarIconBrightness: Brightness.light, // Цвет иконок панели
+      ),
+    );
   }
 
   Future<String?> _getAnswerFromFaq(String query) async {
